@@ -1,0 +1,13 @@
+'Networkteam.Neos.Mockup:Placeholder':
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  ui:
+    label: i18n
+    icon: 'icon-check-empty'
+    position: 450
+  properties:
+    title:
+      type: string
+      defaultValue: 'Enter placeholder title here'
+      ui:
+        inlineEditable: TRUE
