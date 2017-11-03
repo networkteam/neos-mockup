@@ -22,3 +22,4 @@ A Neos package providing basic mockup functionality for content-first approach
 ```bash
 composer require "networkteam/neos-mockup:@dev"
 ```
+4. Follow Neos setup and log into Neos backend
