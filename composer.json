@@ -1,0 +1,14 @@
+{
+    "name": "networkteam/neos-mockup",
+    "description": "A Neos package providing basic mockup functionality for content-first approach",
+    "type": "neos-package",
+    "require": {
+        "neos/neos": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "neoworkteam GmbH",
+            "email": "neos@networkteam.com"
+        }
+    ]
+}
