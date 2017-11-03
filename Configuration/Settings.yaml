@@ -9,19 +9,6 @@ Neos:
           Networkteam.Neos.Mockup:
             - 'NodeTypes/*'
 
-
-
-Neos:
-  Neos:
-    fusion:
-      autoInclude:
-        Neos.NodeTypes: true
-    userInterface:
-      translation:
-        autoInclude:
-          Neos.NodeTypes:
-            - 'NodeTypes/*'
-
 Networkteam:
   Neos:
     Mockup:

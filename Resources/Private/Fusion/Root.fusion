@@ -1,0 +1,42 @@
+page = Neos.Neos:Page {
+	head {
+		stylesheets {
+			mockup = Neos.Fusion:Tag {
+				tagName = 'link'
+				omitClosingTag = true
+				attributes {
+					href = Neos.Fusion:ResourceUri {
+						path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/css/bootstrap.min.css'
+					}
+					rel = "stylesheet"
+				}
+				@if.isMockup = ${Configuration.setting('Networkteam.Neos.Mockup.active') == true ? true : false}
+			}
+		}
+		javascripts {
+			mockup = Neos.Fusion:Tag {
+				tagName = 'script'
+				attributes {
+					src = Neos.Fusion:ResourceUri {
+						path = 'resource://Neos.Twitter.Bootstrap/Public/Libraries/jQuery/jquery-2.0.2.min.js'
+					}
+				}
+				@if.isMockup = ${Configuration.setting('Networkteam.Neos.Mockup.active') == true ? true : false}
+			}
+		}
+	}
+
+	body {
+		javascripts {
+			mockup = Neos.Fusion:Tag {
+				tagName = 'script'
+				attributes {
+					src = Neos.Fusion:ResourceUri {
+						path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/js/bootstrap.min.js'
+					}
+				}
+				@if.isMockup = ${Configuration.setting('Networkteam.Neos.Mockup.active') == true ? true : false}
+			}
+		}
+	}
+}
