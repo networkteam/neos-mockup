@@ -22,4 +22,9 @@ A Neos package providing basic mockup functionality for content-first approach
 ```bash
 composer require "networkteam/neos-mockup:@dev"
 ```
-4. Follow Neos setup and log into Neos backend
+4. Remove `neos/demo` package
+```bash
+composer remove package neos/demo
+```
+5. Follow Neos setup (http://your-neos.site/setup) and **create a new site package with a dummy site**
+6. Log into Neos backend (http://your-neos.site/neos)
