@@ -39,4 +39,20 @@ page = Neos.Neos:Page {
 			}
 		}
 	}
+
+
+	// Override Neos.Neos:Menu Prototype
+	// TODO: Override only, if Configuration.setting('Networkteam.Neos.Mockup.active')
+	prototype(Neos.Neos:Menu) {
+		templatePath = 'resource://Networkteam.Neos.Mockup/Private/Templates/Navigation/Menu.html'
+		active.attributes = Neos.Fusion:Attributes {
+			class = 'active'
+		}
+		current.attributes = Neos.Fusion:Attributes {
+			class = 'active'
+		}
+		normal.attributes = Neos.Fusion:Attributes {
+			class = ''
+		}
+	}
 }
