@@ -1,0 +1,8 @@
+root {
+    # Override the default root matcher to render always mockup docuement nodetype in Mockup.active mode
+    mockup {
+        @position = 'after end 9996'
+        condition = ${Configuration.setting('Networkteam.Neos.Mockup.active')}
+        renderer = Networkteam.Neos.Mockup.Page
+    }
+}

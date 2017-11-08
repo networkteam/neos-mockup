@@ -1,8 +1,8 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-{namespace ts=Neos\Fusion\ViewHelpers}
+{namespace fs=Neos\Fusion\ViewHelpers}
 
 <f:if condition="{items}">
-    <div class="navbar navbar-default">
+    <div class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavigation">
@@ -15,7 +15,7 @@
             </div>
             <div class="collapse navbar-collapse" id="mainNavigation">
                 <ul class="nav navbar-nav">
-                    <f:render section="itemsList" arguments="{items: items}"/>
+                    <f:render section="itemsList" argumenfs="{items: items}"/>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
 
 <f:section name="itemsList">
     <f:for each="{items}" as="item">
-        <li{ts:render(path:'{item.state}.attributes', context: {item: item}) -> f:format.raw()}>
+        <li{fs:render(path:'{item.state}.attributes', context: {item: item}) -> f:format.raw()}>
             <f:if condition="{item.subItems}">
                 <f:then>
                     <neos:link.node node="{item.node}" class="dropdown-toggle" additionalAttributes="{'data-toggle':'dropdown'}">

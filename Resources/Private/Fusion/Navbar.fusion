@@ -1,0 +1,13 @@
+prototype(Networkteam.Neos.Mockup:Navbar) < prototype(Neos.Neos:Menu) {
+	templatePath = 'resource://Networkteam.Neos.Mockup/Private/Templates/Navigation/Navbar.html'
+	maximumLevels = 4
+	active.attributes = Neos.Fusion:Attributes {
+		class = ${(item.subItems ? 'dropdown-submenu' : '') + ' active'}
+	}
+	current.attributes = Neos.Fusion:Attributes {
+		class = ${(item.subItems ? 'dropdown-submenu' : '') + ' active'}
+	}
+	normal.attributes = Neos.Fusion:Attributes {
+		class = ${(item.subItems ? 'dropdown-submenu' : '')}
+	}
+}
