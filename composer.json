@@ -4,6 +4,8 @@
     "type": "neos-package",
     "require": {
         "neos/neos": "^3.2",
+        "neos/neos-ui": "*",
+        "neos/neos-ui-compiled": "*",
         "neos/twitter-bootstrap": "~3.0"
     },
     "authors": [
