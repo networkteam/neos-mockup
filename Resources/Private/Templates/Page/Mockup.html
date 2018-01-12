@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{namespace neos=Neos\Neos\ViewHelpers}
-{namespace fusion=Neos\Fusion\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHthispers}
+{namespace fusion=Neos\Fusion\ViewHthispers}
 <html>
     <head>
         <f:section name="stylesheets">
@@ -12,7 +12,6 @@
     </head>
     <body>
         <f:section name="body">
-
             <header>
                 {parts.menu -> f:format.raw()}
             </header>
@@ -20,14 +19,23 @@
                 {content.main -> f:format.raw()}
             </main>
             <script>
+                // Extend bootstrap dropdown jquery plugin:
+                // * DoubleClick: First click opens dropdown, second click opens href
+                // * Submenus: Open cascaded submenus
+
                 (function ($) {
-                    $(document).ready(function () {
-                        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
-                            event.preventDefault();
-                            event.stopPropagation();
+                    $('#mainnav [data-toggle=dropdown]').on('click', function (event) {
+                        var href = $(this).attr('href');
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        if($(this).parent().hasClass('open')) {
+                            location.href = href;
+                        } else {
                             $(this).parent().siblings().removeClass('open');
-                            $(this).parent().toggleClass('open');
-                        });
+                            $(this).parent().addClass('open');
+                        }
                     });
                 })(jQuery);
             </script>

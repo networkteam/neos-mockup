@@ -11,22 +11,6 @@ indent_size=4
 # editorconfig-tools is unable to ignore longs strings or urls
 max_line_length = null
 
-[{*.html,*.html}]
-indent_style = space
-indent_size = 4
-
-[*.xml]
-indent_style = space
-indent_size = 4
-
-[{*.scss,*.less}]
-indent_style = space
-indent_size = 4
-
-[{*.ts,*.fusion}]
-indent_style = space
-indent_size = 4
-
 [{.babelrc,jest.config,.stylelintrc,.bowerrc,*.json,*.jsb3,*.jsb2,*.js}]
 indent_style=space
 indent_size=2
@@ -42,10 +26,6 @@ indent_size=2
 [.jscsrc]
 indent_style=space
 indent_size=2
-
-[*.php]
-indent_style=space
-indent_size=4
 
 [*.coffee]
 indent_style=space
