@@ -1,0 +1,11 @@
+prototype(Networkteam.Neos.Mockup:Placeholder) <  prototype(Neos.Neos:Content) {
+    attributes {
+        class = Neos.Fusion:RawArray {
+            base = 'neos-mockup-placeholder'
+            @process.nodeType >
+        }
+        style = Neos.Fusion:RawArray {
+            height = ${q(node).property('height') ? 'height: ' + q(node).property('height') + ';' : ''}
+        }
+    }
+}

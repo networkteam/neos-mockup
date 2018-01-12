@@ -1,13 +1,37 @@
 'Networkteam.Neos.Mockup:Placeholder':
   superTypes:
-    'Neos.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
     label: i18n
     icon: 'icon-check-empty'
-    position: 450
+    inspector:
+      groups:
+        layout:
+          label: Layout
+          icon: icon-paint-brush
   properties:
     title:
       type: string
-      defaultValue: 'Enter placeholder title here'
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
+        placeholder: i18n
+        aloha:
+          placeholder: i18n
+          'format': []
+          'table': []
+          'link': []
+          'list': []
+          'alignment': []
+          'formatlesspaste':
+            'button': false
+            'formatlessPasteOption': true
+          'autoparagraph': false
+    height:
+      type: string
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: 'layout'
+          editorOptions:
+            placeholder: 'Enter a value with unit'
