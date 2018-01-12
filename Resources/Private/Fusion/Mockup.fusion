@@ -4,7 +4,7 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
 	head = Neos.Fusion:Array {
 		# Link tags for stylesheets in the head should go here
 		stylesheets {
-			mockup = Neos.Fusion:Tag {
+			bootstrap = Neos.Fusion:Tag {
 				tagName = 'link'
 				omitClosingTag = true
 				attributes {
@@ -14,11 +14,21 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
 					rel = "stylesheet"
 				}
 			}
+			mockup = Neos.Fusion:Tag {
+				tagName = 'link'
+				omitClosingTag = true
+				attributes {
+					href = Neos.Fusion:ResourceUri {
+						path = 'resource://Networkteam.Neos.Mockup/Public/Css/mockup.css'
+					}
+					rel = "stylesheet"
+				}
+			}
 		}
 
 		# Script includes in the head should go here
 		javascripts {
-			mockup = Neos.Fusion:Tag {
+			bootstrap = Neos.Fusion:Tag {
 				tagName = 'script'
 				attributes {
 					src = Neos.Fusion:ResourceUri {
@@ -27,7 +37,7 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
 				}
 			}
 		}
-    }
+	}
 
 	# Content of the body tag. To be defined by the integrator.
 	body {
@@ -36,7 +46,6 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
 		parts {
 			menu = Networkteam.Neos.Mockup:Navbar
 		}
-
 
 		content {
 			// The default content section

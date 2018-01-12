@@ -19,31 +19,6 @@
             <main>
                 {content.main -> f:format.raw()}
             </main>
-
-            <style>
-                /* Extend navbar styles to browse through multible layers in viewports > sm */
-                @media (min-width: 768px) {
-                    .dropdown-submenu {
-                        position: relative;
-                    }
-
-                    .dropdown-submenu .dropdown-submenu > .dropdown-menu {
-                        top: 0;
-                        left: 100%;
-                        margin-top: -6px;
-                        margin-left: -1px;
-                        -webkit-border-radius: 0 6px 6px 6px;
-                        -moz-border-radius: 0 6px 6px 6px;
-                        border-radius: 0 6px 6px 6px;
-                    }
-
-                    .nav .dropdown-menu > .active > a,
-                    .nav .dropdown-menu > .active > a:focus,
-                    .nav .dropdown-menu > .active > a:hover {
-                        background-color: #337ab7;
-                    }
-                }
-            </style>
             <script>
                 (function ($) {
                     $(document).ready(function () {
