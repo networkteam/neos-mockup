@@ -5,7 +5,7 @@ prototype(Networkteam.Neos.Mockup:Placeholder) <  prototype(Neos.Neos:Content) {
             @process.nodeType >
         }
         style = Neos.Fusion:RawArray {
-            height = ${q(node).property('height') ? 'height: ' + q(node).property('height') + ';' : ''}
+            height = ${q(node).property('height') ? 'height: ' + q(node).property('height') + 'px;' : ''}
         }
     }
 }
