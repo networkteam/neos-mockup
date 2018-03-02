@@ -3,7 +3,7 @@
     'Neos.Neos:Content': true
   ui:
     label: i18n
-    icon: 'icon-check-empty'
+    icon: 'icon-square-o'
     inspector:
       groups:
         layout:
