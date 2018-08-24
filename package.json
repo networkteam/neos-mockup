@@ -1,11 +1,15 @@
 {
   "dependencies": {
-    "brunch": "^2.10.16"
+    "node-sass": "^4.9.3"
   },
   "name": "Networkteam.Neos.Mockup",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Neos package providing basic mockup functionality for content-first approach",
   "main": "index.js",
+  "scripts": {
+    "build": "node_modules/node-sass/bin/node-sass --output-style compressed Resources/Private/Scss/mockup.scss > Resources/Public/Css/mockup.css",
+    "start": "node_modules/node-sass/bin/node-sass --watch Resources/Private/Scss -o Resources/Public/Css"
+  },
   "repository": "git@github.com:networkteam/neos-mockup.git",
   "author": "Marcel Tams <marcel.tams@networkteam.com>",
   "license": "MIT"
