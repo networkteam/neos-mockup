@@ -1,25 +1,25 @@
 /* Wireframebox */
 
 .neos-mockup-placeholder {
-	background-color: #DDD;
-	height: 500px;
-	position: relative;
-	background-size: 100% 100%;
+    background-color: #DDD;
+    height: 500px;
+    position: relative;
+    background-size: 100% 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'%3E%3Cg stroke-width='2px' stroke='%23bbbbbb' vector-effect='non-scaling-stroke'%3E%3Cline x1='0' y1='0' x2='1' y2='1' vector-effect='non-scaling-stroke'/%3E%3Cline x1='1' y1='0' x2='0' y2='1' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3C/svg%3E");
-	/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none"><g stroke-width="2px" stroke="#bbbbbb" vector-effect="non-scaling-stroke"><line x1="0" y1="0" x2="1" y2="1" vector-effect="non-scaling-stroke"/><line x1="1" y1="0" x2="0" y2="1" vector-effect="non-scaling-stroke"/></g></svg> */
+    /* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none"><g stroke-width="2px" stroke="#bbbbbb" vector-effect="non-scaling-stroke"><line x1="0" y1="0" x2="1" y2="1" vector-effect="non-scaling-stroke"/><line x1="1" y1="0" x2="0" y2="1" vector-effect="non-scaling-stroke"/></g></svg> */
 
-	span {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		display: block;
-		border-radius: 4px;
-		padding: 10px;
-		background-color: #DDD;
-		color: #777;
-		text-align: center;
-		text-transform: uppercase;
-		border: 2px dashed #BBB;
-	}
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #DDD;
+        color: #777;
+        text-align: center;
+        text-transform: uppercase;
+        border: 2px dashed #BBB;
+    }
 }
