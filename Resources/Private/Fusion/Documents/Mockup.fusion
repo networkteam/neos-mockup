@@ -1,0 +1,69 @@
+prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
+
+    # The content of the head tag, integrators can add their own head content in this array.
+    head = Neos.Fusion:Array {
+        # Link tags for stylesheets in the head should go here
+        stylesheets {
+            bootstrap = Neos.Fusion:Tag {
+                tagName = 'link'
+                omitClosingTag = true
+                attributes {
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/css/bootstrap.min.css'
+                    }
+                    rel = "stylesheet"
+                }
+            }
+            mockup = Neos.Fusion:Tag {
+                tagName = 'link'
+                omitClosingTag = true
+                attributes {
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://Networkteam.Neos.Mockup/Public/Css/mockup.css'
+                    }
+                    rel = "stylesheet"
+                }
+            }
+        }
+
+        # Script includes in the head should go here
+        javascripts {
+            bootstrap = Neos.Fusion:Tag {
+                tagName = 'script'
+                attributes {
+                    src = Neos.Fusion:ResourceUri {
+                        path = 'resource://Neos.Twitter.Bootstrap/Public/Libraries/jQuery/jquery-2.0.2.min.js'
+                    }
+                }
+            }
+        }
+    }
+
+    # Content of the body tag. To be defined by the integrator.
+    body {
+        templatePath = 'resource://Networkteam.Neos.Mockup/Private/Templates/Page/Mockup.html'
+        sectionName = 'body'
+        parts {
+            menu = Networkteam.Neos.Mockup:Navbar
+        }
+
+        content {
+            // The default content section
+            main = Neos.Neos:PrimaryContent {
+                nodePath = 'main'
+            }
+        }
+
+        # Script includes before the closing body tag should go here
+        javascripts {
+            mockup = Neos.Fusion:Tag {
+                tagName = 'script'
+                attributes {
+                    src = Neos.Fusion:ResourceUri {
+                        path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/js/bootstrap.min.js'
+                    }
+                }
+            }
+        }
+    }
+}
