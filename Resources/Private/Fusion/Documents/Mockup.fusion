@@ -54,6 +54,8 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
             }
         }
 
+        footer = null
+
         # Script includes before the closing body tag should go here
         javascripts {
             mockup = Neos.Fusion:Tag {
