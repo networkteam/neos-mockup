@@ -1,0 +1,11 @@
+
+prototype(Networkteam.Neos.Mockup:Components.Atoms.Placeholder) <  prototype(Neos.Fusion:Component) {
+
+    attributes = ''
+    placeholder = null
+
+    renderer = afx`
+        <div {...props.attributes}>
+            {props.placeholder}
+        </div>`
+}
