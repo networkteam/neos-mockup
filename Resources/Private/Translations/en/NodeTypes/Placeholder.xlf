@@ -11,7 +11,7 @@
             <trans-unit id="properties.height.textFieldEditor.placeholder" xml:space="preserve">
                 <source>Enter a value with unit</source>
             </trans-unit>
-            <trans-unit id="properties.title.aloha.placeholder" xml:space="preserve">
+            <trans-unit id="properties.title.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Enter a title</source>
             </trans-unit>
         </body>
