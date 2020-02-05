@@ -1,0 +1,71 @@
+prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Value) {
+    maximumLevels = 4
+    startingPoint = null
+    filter = Neos.Fusion:Join {
+        hiddenInIndex = '[_hiddenInIndex=false]'
+    }
+
+    @context {
+        rootline = ${q(documentNode).parents('[instanceof Neos.Neos:Document]').get()}
+        startingPoint = ${this.startingPoint}
+        maximumLevels = ${this.maximumLevels}
+        filter = ${this.filter}
+    }
+
+    value = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
+        startingPoint = ${startingPoint}
+        menuLevel = 0
+        filter = ${filter}
+    }
+}
+
+prototype(Networkteam.Neos.Mockup:Document.Menu.DataCollection) < prototype(Neos.Fusion:Value) {
+    startingPoint = null
+    menuLevel = 0
+
+    filter = null
+
+    @context{
+        startingPoint = ${this.startingPoint}
+        menuLevel = ${this.menuLevel}
+        filter = ${this.filter}
+    }
+
+    value = Neos.Fusion:RawCollection {
+        collection = ${q(startingPoint).children('[instanceof Neos.Neos:Document]').filter(filter)}
+        itemRenderer = Networkteam.Neos.Mockup:Document.Menu.Item
+    }
+}
+
+prototype(Networkteam.Neos.Mockup:Document.Menu.Item) < prototype(Neos.Fusion:DataStructure) {
+    identifier = ${item.identifier}
+    label = ${q(item).property('title')}
+    state = Networkteam.Neos.Mockup:Document.Menu.Item.State
+
+    subItems = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
+        startingPoint = ${item}
+        menuLevel = ${menuLevel + 1}
+        @if.isInRange = ${!maximumLevels || (menuLevel < maximumLevels)}
+    }
+
+    link = Neos.Neos:NodeUri {
+        node = ${item}
+    }
+}
+
+prototype(Networkteam.Neos.Mockup:Document.Menu.Item.State) < prototype(Neos.Fusion:Case) {
+    current {
+        condition = ${item == documentNode}
+        renderer = 'active'
+    }
+
+    active {
+        condition = ${Array.indexOf(rootline, item) != -1}
+        renderer = 'active'
+    }
+
+    normal {
+        condition = ${true}
+        renderer = ''
+    }
+}
