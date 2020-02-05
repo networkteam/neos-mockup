@@ -56,39 +56,7 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
         footer = null
     }
 
-    bodyScripts = Neos.Fusion:Join {
-        @position = 'before closingBodyTag'
-        extendedBootstrapScript = Neos.Fusion:Value {
-            value = afx`
-                <script>
-                    {"
-                        (function ($) {
-                            $('#mainnav [data-toggle=dropdown]').on('click', function (event) {
-                            var href = $(this).attr('href');
-
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            if($(this).parent().hasClass('open')) {
-                                location.href = href;
-                            } else {
-                                $(this).parent().siblings().removeClass('open');
-                                $(this).parent().addClass('open');
-                            }
-                        });
-                    })(jQuery);
-                "}
-                </script>
-            `
-        }
-
-        mockup = Neos.Fusion:Tag {
-            tagName = 'script'
-            attributes {
-                src = Neos.Fusion:ResourceUri {
-                    path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/js/bootstrap.min.js'
-                }
-            }
-        }
+    bodyScripts = Networkteam.Neos.Mockup:Document.Body.Scripts {
+           @position = 'before closingBodyTag'
     }
 }

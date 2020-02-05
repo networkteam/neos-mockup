@@ -22,7 +22,6 @@ prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Value) 
 prototype(Networkteam.Neos.Mockup:Document.Menu.DataCollection) < prototype(Neos.Fusion:Value) {
     startingPoint = null
     menuLevel = 0
-
     filter = null
 
     @context{

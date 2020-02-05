@@ -1,6 +1,4 @@
-
 prototype(Networkteam.Neos.Mockup:Components.Atoms.Placeholder) <  prototype(Neos.Fusion:Component) {
-
     attributes = ''
     placeholder = null
 
