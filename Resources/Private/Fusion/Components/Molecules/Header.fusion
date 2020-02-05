@@ -1,0 +1,7 @@
+prototype(Networkteam.Neos.Mockup:Components.Molecules.Header) < prototype(Neos.Fusion:Component) {
+    mainNavigation = null
+
+    renderer = afx`
+        {props.mainNavigation}
+    `
+}

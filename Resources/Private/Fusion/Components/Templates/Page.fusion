@@ -1,0 +1,17 @@
+prototype(Networkteam.Neos.Mockup:Components.Templates.Page) < prototype(Neos.Fusion:Component) {
+    header = ''
+    footer = ''
+    content = ''
+
+    renderer = afx`
+        <header>
+            {props.header}
+        </header>
+        <main>
+            {props.content}
+        </main>
+        <footer>
+            {props.footer}
+        </footer>
+    `
+}
