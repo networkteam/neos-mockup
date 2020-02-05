@@ -1,0 +1,94 @@
+prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
+    head {
+        # Link tags for stylesheets in the head should go here
+        stylesheets {
+            bootstrap = Neos.Fusion:Tag {
+                tagName = 'link'
+                omitClosingTag = true
+                attributes {
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/css/bootstrap.min.css'
+                    }
+                    rel = "stylesheet"
+                }
+            }
+
+            mockup = Neos.Fusion:Tag {
+                tagName = 'link'
+                omitClosingTag = true
+                attributes {
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://Networkteam.Neos.Mockup/Public/Css/mockup.css'
+                    }
+                    rel = "stylesheet"
+                }
+            }
+        }
+
+        javascripts {
+            bootstrap = Neos.Fusion:Tag {
+                tagName = 'script'
+                attributes {
+                    src = Neos.Fusion:ResourceUri {
+                        path = 'resource://Neos.Twitter.Bootstrap/Public/Libraries/jQuery/jquery-2.0.2.min.js'
+                    }
+                }
+            }
+        }
+    }
+
+    body = Networkteam.Neos.Mockup:Components.Templates.Page {
+        header = Networkteam.Neos.Mockup:Components.Molecules.Header {
+            mainNavigation = Networkteam.Neos.Mockup:Components.Organisms.Navbar {
+                items = Networkteam.Neos.Mockup:Document.Menu {
+                    startingPoint = ${site}
+                }
+            }
+        }
+
+        content =  Neos.Fusion:Join {
+            // The default content section
+            main = Neos.Neos:PrimaryContent {
+                nodePath = 'main'
+            }
+        }
+
+        footer = null
+    }
+
+    bodyScripts = Neos.Fusion:Join {
+        @position = 'before closingBodyTag'
+        extendedBootstrapScript = Neos.Fusion:Value {
+            value = afx`
+                <script>
+                    {"
+                        (function ($) {
+                            $('#mainnav [data-toggle=dropdown]').on('click', function (event) {
+                            var href = $(this).attr('href');
+
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if($(this).parent().hasClass('open')) {
+                                location.href = href;
+                            } else {
+                                $(this).parent().siblings().removeClass('open');
+                                $(this).parent().addClass('open');
+                            }
+                        });
+                    })(jQuery);
+                "}
+                </script>
+            `
+        }
+
+        mockup = Neos.Fusion:Tag {
+            tagName = 'script'
+            attributes {
+                src = Neos.Fusion:ResourceUri {
+                    path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/js/bootstrap.min.js'
+                }
+            }
+        }
+    }
+}
