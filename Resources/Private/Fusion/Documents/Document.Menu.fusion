@@ -1,70 +1,79 @@
-prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Value) {
+prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Component) {
     maximumLevels = 4
     startingPoint = null
     filter = Neos.Fusion:Join {
         hiddenInIndex = '[_hiddenInIndex=false]'
     }
 
-    @context {
-        rootline = ${q(documentNode).parents('[instanceof Neos.Neos:Document]').get()}
-        startingPoint = ${this.startingPoint}
-        maximumLevels = ${this.maximumLevels}
-        filter = ${this.filter}
-    }
-
-    value = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
-        startingPoint = ${startingPoint}
+    renderer = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
+        startingPoint = ${props.startingPoint}
         menuLevel = 0
-        filter = ${filter}
+        filter = ${props.filter}
+        maximumLevels = ${props.maximumLevels}
     }
 }
 
-prototype(Networkteam.Neos.Mockup:Document.Menu.DataCollection) < prototype(Neos.Fusion:Value) {
+prototype(Networkteam.Neos.Mockup:Document.Menu.DataCollection) < prototype(Neos.Fusion:Component) {
     startingPoint = null
+    maximumLevels = 4
     menuLevel = 0
     filter = null
 
-    @context{
-        startingPoint = ${this.startingPoint}
-        menuLevel = ${this.menuLevel}
-        filter = ${this.filter}
-    }
-
-    value = Neos.Fusion:RawCollection {
-        collection = ${q(startingPoint).children('[instanceof Neos.Neos:Document]').filter(filter)}
-        itemRenderer = Networkteam.Neos.Mockup:Document.Menu.Item
+    renderer = Neos.Fusion:Map {
+        items = ${q(props.startingPoint).children('[instanceof Neos.Neos:Document]').filter(props.filter)}
+        itemRenderer = Networkteam.Neos.Mockup:Document.Menu.Item {
+            item = ${item}
+            menuLevel = ${props.menuLevel}
+            maximumLevels = ${props.maximumLevels}
+        }
     }
 }
 
-prototype(Networkteam.Neos.Mockup:Document.Menu.Item) < prototype(Neos.Fusion:DataStructure) {
-    identifier = ${item.identifier}
-    label = ${q(item).property('title')}
-    state = Networkteam.Neos.Mockup:Document.Menu.Item.State
+prototype(Networkteam.Neos.Mockup:Document.Menu.Item) < prototype(Neos.Fusion:Component) {
+    item = null
+    menuLevel = 0
+    maximumLevels = 4
 
-    subItems = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
-        startingPoint = ${item}
-        menuLevel = ${menuLevel + 1}
-        @if.isInRange = ${!maximumLevels || (menuLevel < maximumLevels)}
-    }
+    renderer = Neos.Fusion:DataStructure {
+        identifier = ${props.item.identifier}
+        label = ${q(props.item).property('title')}
 
-    link = Neos.Neos:NodeUri {
-        node = ${item}
+
+        link = Neos.Neos:NodeUri {
+            node = ${props.item}
+        }
+
+
+        subItems = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
+            startingPoint = ${props.item}
+            menuLevel = ${props.menuLevel + 1}
+            @if.isInRange = ${!props.maximumLevels || (props.menuLevel < props.maximumLevels)}
+        }
+
+        state = Networkteam.Neos.Mockup:Document.Menu.Item.State {
+            item = ${props.item}
+        }
     }
 }
 
-prototype(Networkteam.Neos.Mockup:Document.Menu.Item.State) < prototype(Neos.Fusion:Case) {
-    current {
-        condition = ${item == documentNode}
-        renderer = 'active'
-    }
+prototype(Networkteam.Neos.Mockup:Document.Menu.Item.State) < prototype(Neos.Fusion:Component) {
+    item = null
+    rootline = ${q(documentNode).parents('[instanceof Neos.Neos:Document]').get()}
 
-    active {
-        condition = ${Array.indexOf(rootline, item) != -1}
-        renderer = 'active'
-    }
+    renderer = Neos.Fusion:Case {
+        current {
+            condition = ${props.item == documentNode}
+            renderer = 'active'
+        }
 
-    normal {
-        condition = ${true}
-        renderer = ''
+        active {
+            condition = ${Array.indexOf(props.rootline, props.item) != -1}
+            renderer = 'active'
+        }
+
+        normal {
+            condition = ${true}
+            renderer = ''
+        }
     }
 }
