@@ -1,5 +1,5 @@
 prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar) < prototype(Neos.Fusion:Component) {
-    items = null
+    items = ${[]}
     title = ''
 
     renderer = afx`
@@ -25,7 +25,7 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar) < prototype(Neos.
 }
 
 prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList) < prototype(Neos.Fusion:Component) {
-    items = null
+    items = ${[]}
 
     renderer = afx`
         <Neos.Fusion:Loop items={props.items} @children='itemRenderer'>
@@ -43,7 +43,7 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList.Item) < p
     label = ''
     state = ''
     link = ''
-    subitems = ''
+    subitems = ${[]}
     identifier = ''
 
     renderer = afx`
