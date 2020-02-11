@@ -1,0 +1,14 @@
+prototype(Networkteam.Neos.Mockup:Components.Atoms.Placeholder) <  prototype(Neos.Fusion:Component) {
+    containerHeight = ''
+    placeholder = ''
+
+    renderer.@context.containerHeight = ${Type.isNumeric(props.containerHeight) ? props.containerHeight + 'px' : props.containerHeight}
+
+    renderer = afx`
+        <div class="placeholder"
+            style={"height: " + containerHeight}
+            style.@if.hasHeight={containerHeight}
+        >
+            {props.placeholder}
+        </div>`
+}

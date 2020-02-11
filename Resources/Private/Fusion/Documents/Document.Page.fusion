@@ -1,7 +1,5 @@
 prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
-
-    # The content of the head tag, integrators can add their own head content in this array.
-    head = Neos.Fusion:Array {
+    head {
         # Link tags for stylesheets in the head should go here
         stylesheets {
             bootstrap = Neos.Fusion:Tag {
@@ -14,6 +12,7 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
                     rel = "stylesheet"
                 }
             }
+
             mockup = Neos.Fusion:Tag {
                 tagName = 'link'
                 omitClosingTag = true
@@ -26,7 +25,6 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
             }
         }
 
-        # Script includes in the head should go here
         javascripts {
             bootstrap = Neos.Fusion:Tag {
                 tagName = 'script'
@@ -39,15 +37,16 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
         }
     }
 
-    # Content of the body tag. To be defined by the integrator.
-    body {
-        templatePath = 'resource://Networkteam.Neos.Mockup/Private/Templates/Page/Mockup.html'
-        sectionName = 'body'
-        parts {
-            menu = Networkteam.Neos.Mockup:Navbar
+    body = Networkteam.Neos.Mockup:Components.Templates.Page {
+        header = Networkteam.Neos.Mockup:Components.Molecules.Header {
+            mainNavigation = Networkteam.Neos.Mockup:Components.Organisms.Navbar {
+                items = Networkteam.Neos.Mockup:Document.Menu {
+                    startingPoint = ${site}
+                }
+            }
         }
 
-        content {
+        content =  Neos.Fusion:Join {
             // The default content section
             main = Neos.Neos:PrimaryContent {
                 nodePath = 'main'
@@ -55,17 +54,9 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
         }
 
         footer = null
+    }
 
-        # Script includes before the closing body tag should go here
-        javascripts {
-            mockup = Neos.Fusion:Tag {
-                tagName = 'script'
-                attributes {
-                    src = Neos.Fusion:ResourceUri {
-                        path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/js/bootstrap.min.js'
-                    }
-                }
-            }
-        }
+    bodyScripts = Networkteam.Neos.Mockup:Document.Body.Scripts {
+           @position = 'before closingBodyTag'
     }
 }

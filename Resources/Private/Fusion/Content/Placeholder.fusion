@@ -1,11 +1,10 @@
-prototype(Networkteam.Neos.Mockup:Placeholder) <  prototype(Neos.Neos:Content) {
-    attributes {
-        class = Neos.Fusion:RawArray {
-            base = 'neos-mockup-placeholder'
-            @process.nodeType >
-        }
-        style = Neos.Fusion:RawArray {
-            height = ${q(node).property('height') ? 'height: ' + q(node).property('height') + 'px;' : ''}
+prototype(Networkteam.Neos.Mockup:Placeholder) <  prototype(Neos.Neos:ContentComponent) {
+    renderer = Networkteam.Neos.Mockup:Components.Atoms.Placeholder {
+        containerHeight = ${q(node).property('height')}
+
+        placeholder = Neos.Neos:Editable {
+            property = 'title'
+            block = false
         }
     }
 }

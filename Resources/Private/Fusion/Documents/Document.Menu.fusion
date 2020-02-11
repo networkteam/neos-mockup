@@ -1,0 +1,77 @@
+prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Component) {
+    maximumLevels = 4
+    startingPoint = null
+    filter = Neos.Fusion:Join {
+        hiddenInIndex = '[_hiddenInIndex=false]'
+    }
+
+    renderer = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
+        startingPoint = ${props.startingPoint}
+        menuLevel = 0
+        filter = ${props.filter}
+        maximumLevels = ${props.maximumLevels}
+    }
+}
+
+prototype(Networkteam.Neos.Mockup:Document.Menu.DataCollection) < prototype(Neos.Fusion:Component) {
+    startingPoint = null
+    maximumLevels = 4
+    menuLevel = 0
+    filter = null
+
+    renderer = Neos.Fusion:Map {
+        items = ${q(props.startingPoint).children('[instanceof Neos.Neos:Document]').filter(props.filter)}
+        itemRenderer = Networkteam.Neos.Mockup:Document.Menu.Item {
+            item = ${item}
+            menuLevel = ${props.menuLevel}
+            maximumLevels = ${props.maximumLevels}
+        }
+    }
+}
+
+prototype(Networkteam.Neos.Mockup:Document.Menu.Item) < prototype(Neos.Fusion:Component) {
+    item = null
+    menuLevel = 0
+    maximumLevels = 4
+
+    renderer = Neos.Fusion:DataStructure {
+        identifier = ${props.item.identifier}
+        label = ${q(props.item).property('title')}
+
+        link = Neos.Neos:NodeUri {
+            node = ${props.item}
+        }
+
+        subItems = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
+            startingPoint = ${props.item}
+            menuLevel = ${props.menuLevel + 1}
+            @if.isInRange = ${!props.maximumLevels || (props.menuLevel < props.maximumLevels)}
+        }
+
+        state = Networkteam.Neos.Mockup:Document.Menu.Item.State {
+            item = ${props.item}
+        }
+    }
+}
+
+prototype(Networkteam.Neos.Mockup:Document.Menu.Item.State) < prototype(Neos.Fusion:Component) {
+    item = null
+    rootline = ${q(documentNode).parents('[instanceof Neos.Neos:Document]').get()}
+
+    renderer = Neos.Fusion:Case {
+        current {
+            condition = ${props.item == documentNode}
+            renderer = 'active'
+        }
+
+        active {
+            condition = ${Array.indexOf(props.rootline, props.item) != -1}
+            renderer = 'active'
+        }
+
+        normal {
+            condition = ${true}
+            renderer = ''
+        }
+    }
+}
