@@ -38,11 +38,9 @@ prototype(Networkteam.Neos.Mockup:Document.Menu.Item) < prototype(Neos.Fusion:Co
         identifier = ${props.item.identifier}
         label = ${q(props.item).property('title')}
 
-
         link = Neos.Neos:NodeUri {
             node = ${props.item}
         }
-
 
         subItems = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
             startingPoint = ${props.item}
