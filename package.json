@@ -12,6 +12,6 @@
   "author": "Marcel Tams <marcel.tams@networkteam.com>",
   "license": "MIT",
   "devDependencies": {
-    "node-sass": "^4.9.3"
+    "node-sass": "^4.13.1"
   }
 }
