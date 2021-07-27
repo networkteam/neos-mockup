@@ -5,10 +5,10 @@ prototype(Networkteam.Neos.Mockup:Components.Atoms.Placeholder) <  prototype(Neo
     renderer.@context.containerHeight = ${Type.isNumeric(props.containerHeight) ? props.containerHeight + 'px' : props.containerHeight}
 
     renderer = afx`
-        <div class="placeholder"
+        <div class="neos-mockup-placeholder"
             style={"height: " + containerHeight}
             style.@if.hasHeight={containerHeight}
         >
-            {props.placeholder}
+         <span>{props.placeholder}</span>
         </div>`
 }
