@@ -3,6 +3,6 @@ root {
     mockup {
         @position = 'end'
         condition = ${Configuration.setting('Networkteam.Neos.Mockup.active')}
-        renderer = Networkteam.Neos.Mockup.Page
+        renderer = Networkteam.Neos.Mockup:Page
     }
 }
