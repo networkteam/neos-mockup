@@ -3,7 +3,7 @@
     "description": "A Neos package providing basic mockup functionality for content-first approach",
     "type": "neos-package",
     "require": {
-        "neos/neos": "^5.0 || ^7.0 || ^8.0",
+        "neos/neos": "^4.0 || ^5.0 || ^7.0 || ^8.0",
         "neos/neos-ui": "*",
         "neos/fusion-afx": "*",
         "neos/twitter-bootstrap": "~3.0"
