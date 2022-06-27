@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node_modules/.bin/sass --style=compressed Resources/Private/Scss/mockup.scss Resources/Public/Css/mockup.css",
-    "start": "node_modules/.bin/sass --watch Resources/Private/Scss Resources/Public/Css"
+    "start": "node_modules/.bin/sass --style=compressed --watch Resources/Private/Scss:Resources/Public/Css"
   },
   "repository": "git@github.com:networkteam/neos-mockup.git",
   "author": "Marcel Tams <marcel.tams@networkteam.com>",
