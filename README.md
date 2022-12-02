@@ -20,8 +20,8 @@ composer remove package neos/demo
 ## Usage Mockup Page
 
 Set prototype of Page to `Networkteam.Neos.Mockup.Page`
-## Usage Mockup Header
 
+## Usage Mockup Header
 
 Set prototype of Header to `Networkteam.Neos.Mockup:Components.Molecules.Header`
 
@@ -29,7 +29,6 @@ Set prototype of Header to `Networkteam.Neos.Mockup:Components.Molecules.Header`
 
 Set prototype of Body to `Networkteam.Neos.Mockup:Components.Templates.Page`
 ## Usage Mockup Navigation
-
 
 Set prototype of Navigation to `Networkteam.Neos.Mockup:Components.Organisms.Navbar`
 To use your custom logo / title or else, overwrite certain props you want.
