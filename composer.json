@@ -5,8 +5,7 @@
     "require": {
         "neos/neos": "^4.0 || ^5.0 || ^7.0",
         "neos/neos-ui": "*",
-        "neos/fusion-afx": "*",
-        "neos/twitter-bootstrap": "~3.0"
+        "neos/fusion-afx": "*"
     },
     "authors": [
         {

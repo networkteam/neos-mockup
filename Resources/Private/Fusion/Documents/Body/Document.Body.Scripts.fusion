@@ -1,34 +1,3 @@
 prototype(Networkteam.Neos.Mockup:Document.Body.Scripts) < prototype(Neos.Fusion:Join) {
-    extendedBootstrapScript = Neos.Fusion:Value {
-        value = afx`
-            <script>
-                {"
-                    (function ($) {
-                        $('#mainnav [data-toggle=dropdown]').on('click', function (event) {
-                        var href = $(this).attr('href');
-
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        if($(this).parent().hasClass('open')) {
-                            location.href = href;
-                        } else {
-                            $(this).parent().siblings().removeClass('open');
-                            $(this).parent().addClass('open');
-                        }
-                    });
-                })(jQuery);
-            "}
-            </script>
-        `
-    }
-
-    mockup = Neos.Fusion:Tag {
-        tagName = 'script'
-        attributes {
-            src = Neos.Fusion:ResourceUri {
-                path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/js/bootstrap.min.js'
-            }
-        }
-    }
+    mockNavbar = Networkteam.Neos.Mockup:Components.Organisms.Navbar.Scripts
 }
