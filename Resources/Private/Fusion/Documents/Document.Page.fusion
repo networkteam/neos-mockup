@@ -21,7 +21,6 @@ prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
                 items = Networkteam.Neos.Mockup:Document.Menu {
                     startingPoint = ${site}
                 }
-                titleEntity = "YourBrand"
             }
         }
 

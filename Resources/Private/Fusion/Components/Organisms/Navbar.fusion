@@ -2,7 +2,6 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar) < prototype(Neos.
     items = ${[]}
     title = ''
     // e.g. can be used to use logo component from outside, or any tag
-    titleEntity = null
 
     hamburgerIcon = Neos.Fusion:ResourceUri {
         path = 'resource://Networkteam.Neos.Mockup/Public/Icons/hamburger.svg'
@@ -11,7 +10,7 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar) < prototype(Neos.
     renderer = afx`
         <nav id="mainnav" class="navigation">
             <ul class='menu'>
-                <li class="logo">{props.titleEntity || props.title}</li>
+                <li class="logo">{props.title}</li>
                 <Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList items={props.items} />
                 <li class="toggle">
                     <a href="#">
