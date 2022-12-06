@@ -82,70 +82,12 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.Scripts) < prototy
         }
     }
     closeIcon = ${Json.stringify('<object data=' + closeIconSrc + ' class="no-pointer-events" type="image/svg+xml" width="30" height="30"></object>')}
-    hamburger = ${Json.stringify('<object data=' + hamburgerSrc + ' class="no-pointer-events" type="image/svg+xml" width="30" height="30"></object>')}
-
+    hamburgerIcon = ${Json.stringify('<object data=' + hamburgerSrc + ' class="no-pointer-events" type="image/svg+xml" width="30" height="30"></object>')}
+    navigationSrc = Neos.Fusion:ResourceUri {
+        path = 'resource://Networkteam.Neos.Mockup/Public/Scripts/navigation.js'
+    }
     renderer = afx`
-        <script>
-            const closeIcon = {props.closeIcon};
-            const hamburger = {props.hamburger};
-            {"(function ()
-              {
-                const toggle = document.querySelector('.toggle');
-                const menu = document.querySelector('.menu');
-                const items = document.querySelectorAll('.item');
-
-                /* Toggle mobile menu */
-                function toggleMenu() {
-                    if (menu.classList.contains('active')) {
-                        menu.classList.remove('active');
-                        /* TODO: add a working icon*/
-                        toggle.querySelector('a').innerHTML = hamburger;
-                    } else {
-                        menu.classList.add('active');
-                        /* TODO: add a working icon*/
-                        toggle.querySelector('a').innerHTML = closeIcon;
-                    }
-                }
-
-                /* Activate Submenu */
-                function toggleItem() {
-                    if (this.classList.contains('submenu-active')) {
-                        this.classList.remove('submenu-active');
-                    } else if (menu.querySelector('.submenu-active')) {
-                        menu.querySelector('.submenu-active').classList.remove('submenu-active');
-                        this.classList.add('submenu-active');
-                    } else {
-                        this.classList.add('submenu-active');
-                    }
-                }
-
-                /* Close Submenu From Anywhere */
-                function closeSubmenu(e) {
-                    if (menu.querySelector('.submenu-active')) {
-                        let isClickInside = menu
-                            .querySelector('.submenu-active')
-                            .contains(e.target);
-
-                        if (!isClickInside && menu.querySelector('.submenu-active')) {
-                            menu.querySelector('.submenu-active').classList.remove('submenu-active');
-                        }
-                    }
-                }
-                /* Event Listeners */
-                toggle.addEventListener('click', toggleMenu, false);
-                document.body.addEventListener('click', closeSubmenu, false);
-
-                for (let item of items) {
-                    if (item.querySelector('.submenu')) {
-                        item.addEventListener('mouseenter', toggleItem, false);
-                        item.addEventListener('mouseout', closeSubmenu, false);
-                    }
-                        item.addEventListener('keypress', toggleItem, false);
-                    }
-                }
-            )()"}
-
-
-        </script>
+        <div id="mockup-navigation-data-container" data-close-icon={props.closeIcon} data-hamburger-icon={props.hamburgerIcon}></div>
+        <script type="text/javascript" src={props.navigationSrc}></script>
     `
 }
