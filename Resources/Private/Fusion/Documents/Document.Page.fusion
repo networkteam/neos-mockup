@@ -1,4 +1,4 @@
-prototype(Networkteam.Neos.Mockup.Page) < prototype(Neos.Neos:Page) {
+prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
     head {
         # Link tags for stylesheets in the head should go here
         stylesheets {
