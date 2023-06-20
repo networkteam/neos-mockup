@@ -1,31 +1,32 @@
 prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar) < prototype(Neos.Fusion:Component) {
     items = ${[]}
     title = ''
+    // e.g. can be used to use logo component from outside, or any tag
+
+    hamburgerIcon = Neos.Fusion:ResourceUri {
+        path = 'resource://Networkteam.Neos.Mockup/Public/Icons/hamburger.svg'
+    }
 
     renderer = afx`
-        <div id="mainnav" class="navbar navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">{props.title}</a>
-                </div>
-                <div class="collapse navbar-collapse" id="mainNavigation">
-                    <ul class='nav navbar-nav'>
-                        <Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList items={props.items} />
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <nav id="mainnav" class="navigation">
+            <ul class='menu'>
+                <li class="logo">{props.title}</li>
+                <Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList items={props.items} />
+                <li class="toggle">
+                    <a href="#">
+                        <span>
+                            <object data={props.hamburgerIcon} class="no-pointer-events position-right" type="image/svg+xml" width="30" height="30"></object>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     `
 }
 
 prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList) < prototype(Neos.Fusion:Component) {
     items = ${[]}
+    menuLevel = 1
 
     renderer = afx`
         <Neos.Fusion:Loop items={props.items} @children='itemRenderer'>
@@ -34,6 +35,7 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList) < protot
                 state={item.state}
                 link={item.link}
                 subItems={item.subItems}
+                menuLevel={props.menuLevel}
             />
         </Neos.Fusion:Loop>
     `
@@ -45,19 +47,46 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList.Item) < p
     link = ''
     subitems = ${[]}
     identifier = ''
+    menuLevel = 1
+
+    caretDownSrc = Neos.Fusion:ResourceUri {
+        path = 'resource://Networkteam.Neos.Mockup/Public/Icons/caret-down.svg'
+    }
+
+    hasSubmenu = ${this.subItems && this.menuLevel < 2}
 
     renderer = afx`
-        <li class={props.state + (props.subItems ? ' dropdown-submenu' : '')}>
-            <a href={props.link} class="dropdown-toggle" data-toggle="dropdown">
+        <li class={props.state + (props.menuLevel > 1 ? ' subitem' : ' item') + (props.hasSubmenu ? ' has-submenu' : '')}>
+            <a href={props.link} title={props.label}>
                 {props.label}
-                <span @if.hasSubitems={props.subItems} class="caret"></span>
+                <object @if.hasSubmenu={props.hasSubmenu} data={props.caretDownSrc} class="no-pointer-events absolute-inline" type="image/svg+xml" width="10" height="10"></object>
             </a>
-            <ul @if.hasSubitems={props.subItems} class="dropdown-menu">
+            <ul @if.hasSubitems={props.subItems && props.menuLevel < 2} class="submenu">
                 <Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList
                     items={props.subItems}
                     menuLevel={props.menuLevel + 1}
                 />
             </ul>
         </li>
+    `
+}
+
+prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.Scripts) < prototype(Neos.Fusion:Component) {
+    @context {
+        closeIconSrc = Neos.Fusion:ResourceUri {
+            path = 'resource://Networkteam.Neos.Mockup/Public/Icons/close.svg'
+        }
+        hamburgerSrc = Neos.Fusion:ResourceUri {
+            path = 'resource://Networkteam.Neos.Mockup/Public/Icons/hamburger.svg'
+        }
+    }
+    closeIcon = ${Json.stringify('<object data=' + closeIconSrc + ' class="no-pointer-events" type="image/svg+xml" width="30" height="30"></object>')}
+    hamburgerIcon = ${Json.stringify('<object data=' + hamburgerSrc + ' class="no-pointer-events" type="image/svg+xml" width="30" height="30"></object>')}
+    navigationSrc = Neos.Fusion:ResourceUri {
+        path = 'resource://Networkteam.Neos.Mockup/Public/Scripts/navigation.js'
+    }
+    renderer = afx`
+        <div id="mockup-navigation-data-container" data-close-icon={props.closeIcon} data-hamburger-icon={props.hamburgerIcon}></div>
+        <script type="text/javascript" src={props.navigationSrc}></script>
     `
 }

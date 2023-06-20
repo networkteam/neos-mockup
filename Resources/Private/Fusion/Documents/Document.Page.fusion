@@ -2,17 +2,6 @@ prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
     head {
         # Link tags for stylesheets in the head should go here
         stylesheets {
-            bootstrap = Neos.Fusion:Tag {
-                tagName = 'link'
-                omitClosingTag = true
-                attributes {
-                    href = Neos.Fusion:ResourceUri {
-                        path = 'resource://Neos.Twitter.Bootstrap/Public/3.3/css/bootstrap.min.css'
-                    }
-                    rel = "stylesheet"
-                }
-            }
-
             mockup = Neos.Fusion:Tag {
                 tagName = 'link'
                 omitClosingTag = true
@@ -21,17 +10,6 @@ prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
                         path = 'resource://Networkteam.Neos.Mockup/Public/Css/mockup.css'
                     }
                     rel = "stylesheet"
-                }
-            }
-        }
-
-        javascripts {
-            bootstrap = Neos.Fusion:Tag {
-                tagName = 'script'
-                attributes {
-                    src = Neos.Fusion:ResourceUri {
-                        path = 'resource://Neos.Twitter.Bootstrap/Public/Libraries/jQuery/jquery-2.0.2.min.js'
-                    }
                 }
             }
         }
@@ -57,6 +35,6 @@ prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
     }
 
     bodyScripts = Networkteam.Neos.Mockup:Document.Body.Scripts {
-           @position = 'before closingBodyTag'
+        @position = 'before closingBodyTag'
     }
 }
