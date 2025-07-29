@@ -1,3 +1,4 @@
+// TODO 9.0 migration: "Neos.Neos:PrimaryContent" has been removed without a complete replacement. We replaced all usages with "Neos.Neos:ContentCollection" but not the prototype definition. Please check the replacements and if you have overridden the "Neos.Neos:PrimaryContent" prototype and rewrite it for your needs.
 prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
     head {
         # Link tags for stylesheets in the head should go here
@@ -26,7 +27,7 @@ prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
 
         content =  Neos.Fusion:Join {
             // The default content section
-            main = Neos.Neos:PrimaryContent {
+            main = Neos.Neos:ContentCollection {
                 nodePath = 'main'
             }
         }

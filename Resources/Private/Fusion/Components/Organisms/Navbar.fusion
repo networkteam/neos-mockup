@@ -1,3 +1,6 @@
+// TODO 9.0 migration: Line 37: You very likely need to rewrite "VARIABLE.label" to "Neos.Node.label(VARIABLE)". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO 9.0 migration: Line 63: You very likely need to rewrite "VARIABLE.label" to "Neos.Node.label(VARIABLE)". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO 9.0 migration: Line 64: You very likely need to rewrite "VARIABLE.label" to "Neos.Node.label(VARIABLE)". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar) < prototype(Neos.Fusion:Component) {
     items = ${[]}
     title = ''

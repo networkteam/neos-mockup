@@ -1,3 +1,4 @@
+// TODO 9.0 migration: Line 39: You may need to rewrite "VARIABLE.identifier" to "VARIABLE.aggregateId". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Component) {
     maximumLevels = 4
     startingPoint = null

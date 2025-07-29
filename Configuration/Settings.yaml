@@ -8,9 +8,8 @@ Neos:
         autoInclude:
           Networkteam.Neos.Mockup:
             - 'NodeTypes/*'
-
 Networkteam:
   Neos:
     Mockup:
       active: true
-      title: 'Mockup'
+      title: Mockup
