@@ -1,6 +1,13 @@
 # neos-mockup
 A Neos package providing basic mockup functionality for content-first approach
 
+## Versions
+
+| Neos CMS      | Plugin |
+|---------------|--------|
+| >= 9.0        | 5.x    |
+| >= 4.0, < 9.0 | 4.x    |
+
 ## Install package
 
 1. Install **neos base distribution** via composer https://www.neos.io/download-and-extend.html
