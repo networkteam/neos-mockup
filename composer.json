@@ -7,6 +7,9 @@
         "neos/neos-ui": "*",
         "neos/fusion-afx": "*"
     },
+    "require-dev": {
+        "neos/contentgraph-doctrinedbaladapter": "^9.0"
+    },
     "authors": [
         {
             "name": "networkteam GmbH",
@@ -92,7 +95,5 @@
             "Neos.Flow-20190425144900",
             "Neos.Flow-20190515215000"
         ]
-    "require-dev": {
-        "neos/contentgraph-doctrinedbaladapter": "^9.0"
     }
 }
