@@ -8,7 +8,7 @@
         "neos/fusion-afx": "*"
     },
     "require-dev": {
-        "neos/contentgraph-doctrinedbaladapter": "^9.0"
+        "neos/contentgraph-doctrinedbaladapter": "*"
     },
     "authors": [
         {
