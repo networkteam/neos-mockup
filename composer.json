@@ -5,7 +5,6 @@
     "require": {
         "neos/neos": "^9.0",
         "neos/neos-ui": "*",
-        "neos/contentgraph-doctrinedbaladapter": "*",
         "neos/fusion-afx": "*"
     },
     "authors": [
@@ -93,5 +92,7 @@
             "Neos.Flow-20190425144900",
             "Neos.Flow-20190515215000"
         ]
+    "require-dev": {
+        "neos/contentgraph-doctrinedbaladapter": "^9.0"
     }
 }
