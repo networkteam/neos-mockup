@@ -31,7 +31,7 @@ prototype(Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList) < protot
     renderer = afx`
         <Neos.Fusion:Loop items={props.items} @children='itemRenderer'>
             <Networkteam.Neos.Mockup:Components.Organisms.Navbar.ItemList.Item
-                label={Neos.Node.label(item)}
+                label={item.label}
                 state={item.state}
                 link={item.link}
                 subItems={item.subItems}
