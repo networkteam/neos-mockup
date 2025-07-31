@@ -2,7 +2,7 @@ prototype(Networkteam.Neos.Mockup:Document.Menu) < prototype(Neos.Fusion:Compone
     maximumLevels = 4
     startingPoint = null
     filter = Neos.Fusion:Join {
-        hiddenInIndex = '[_hiddenInIndex=false]'
+        hiddenInMenu = '[hiddenInMenu!=true]'
     }
 
     renderer = Networkteam.Neos.Mockup:Document.Menu.DataCollection {
