@@ -26,7 +26,7 @@ prototype(Networkteam.Neos.Mockup:Page) < prototype(Neos.Neos:Page) {
 
         content =  Neos.Fusion:Join {
             // The default content section
-            main = Neos.Neos:PrimaryContent {
+            main = Neos.Neos:ContentCollection {
                 nodePath = 'main'
             }
         }

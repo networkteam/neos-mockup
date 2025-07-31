@@ -35,7 +35,7 @@ prototype(Networkteam.Neos.Mockup:Document.Menu.Item) < prototype(Neos.Fusion:Co
     maximumLevels = 4
 
     renderer = Neos.Fusion:DataStructure {
-        identifier = ${props.item.identifier}
+        identifier = ${props.item.aggregateId}
         label = ${q(props.item).property('title')}
 
         link = Neos.Neos:NodeUri {
